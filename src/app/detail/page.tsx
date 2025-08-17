@@ -1,10 +1,10 @@
 "use client";
 import PageLayout from "#components/layouts/PageLayout";
 
-export default function Home() {
+export default function Page() {
   return (
     <PageLayout>
-      <h1>main content</h1>
+      <h1>dsdf</h1>
     </PageLayout>
   );
 }
