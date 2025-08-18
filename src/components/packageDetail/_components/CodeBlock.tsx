@@ -29,7 +29,7 @@ const CodeBlock: React.FC<{
             ...prismTheme['code[class*="language-"]'],
             fontSize: "14px",
             borderRadius: "5px",
-            padding: "16px 20px",
+            padding: "16px 0",
           },
         }}
         language={match[1]}

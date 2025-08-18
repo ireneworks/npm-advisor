@@ -28,6 +28,15 @@ export function readMeProcessing(data: string) {
 
   return readMe
     .split("\n")
-    .filter((line) => !/\[!\[.*?\]\(.*?\)\]\(.*?\)/.test(line))
+    .filter(
+      (line) =>
+        !/^\s*(\[[^\]]*?\]\([^)]*?\)\s*)+$/g.test(line.trim()) &&
+        !/^\s*(\[[^\]]*?\]\[[^\]]*?\]\s*)+$/g.test(line.trim()),
+    )
+    .map((line) =>
+      line
+        .replace(/\[!\[[^\]]*?\]\([^\)]*?\)\]\([^\)]*?\)/g, "")
+        .replace(/\[!\[[^\]]*?\]\[[^\]]*?\]\]\[[^\]]*?\]/g, ""),
+    )
     .join("\n");
 }

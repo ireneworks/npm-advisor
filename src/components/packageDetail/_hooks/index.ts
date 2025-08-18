@@ -1,23 +1,23 @@
 import { useParams } from "next/navigation";
-import { useNpmSWR } from "#hooks/useNpmSwr";
+import { useNpm } from "#hooks/useNpm";
 import { INpmDetail } from "#types/model/npmPackage";
-import { useGithubReadMeSWR } from "#hooks/useGithubReadMeSWR";
+import { useGithubReadMe } from "#hooks/useGithubReadMe";
 import { useEffect } from "react";
 import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
 import {
   detailProcessing,
   readMeProcessing,
-} from "#components/packageDetail/_helpers/detailProcessing";
+} from "#components/packageDetail/_helpers/packageDetailProcessing";
 
 export function useDetailFetcher() {
   const { name: packageName } = useParams();
 
-  const { data: detail, isLoading: isLoadingNpm } = useNpmSWR<INpmDetail>({
+  const { data: detail, isLoading: isLoadingNpm } = useNpm<INpmDetail>({
     type: "detail",
     name: packageName as string,
   });
-  const { data: readMe, isLoading: isLoadingGithub } = useGithubReadMeSWR(
-    detail ? detail.repository.url : null,
+  const { data: readMe, isLoading: isLoadingGithub } = useGithubReadMe(
+    detail ? detail.repository?.url : null,
   );
 
   const { setDetail, setReadme } = usePackageDetailStore();

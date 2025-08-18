@@ -17,13 +17,13 @@ const MarkdownRenderer: React.FC<Props> = ({ content }) => {
         components={{
           // Headings
           h1: ({ children }) => (
-            <h1 className="text-3xl font-bold my-4">{children}</h1>
+            <h1 className="text-3xl font-bold my-5">{children}</h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-2xl font-semibold my-3">{children}</h2>
+            <h2 className="text-2xl font-semibold my-4">{children}</h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-xl font-semibold my-2">{children}</h3>
+            <h3 className="text-xl font-semibold my-3">{children}</h3>
           ),
           h4: ({ children }) => (
             <h4 className="text-lg font-medium my-2">{children}</h4>
@@ -36,9 +36,7 @@ const MarkdownRenderer: React.FC<Props> = ({ content }) => {
           ),
 
           // Paragraph
-          p: ({ children }) => (
-            <p className="my-2 leading-relaxed">{children}</p>
-          ),
+          p: ({ children }) => <p className="my-2 leading-loose">{children}</p>,
 
           // Lists
           ul: ({ children }) => (

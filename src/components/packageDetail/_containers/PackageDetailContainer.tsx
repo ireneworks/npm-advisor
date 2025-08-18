@@ -34,7 +34,7 @@ export default function PackageDetailContainer() {
           </div>
         </a>
       )}
-      <Button>Check my environment</Button>
+      <Button className="cursor-pointer">Check my environment</Button>
     </div>
   );
 }
