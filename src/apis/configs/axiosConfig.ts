@@ -1,13 +1,18 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
-export const npmRequester = axios.create({
-  baseURL: "https://registry.npmjs.org",
-  timeout: 3000,
-});
+export function createRequester(baseURL: string): AxiosInstance {
+  const instance = axios.create({
+    baseURL,
+    timeout: 5000,
+  });
 
-npmRequester.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    return Promise.reject(error);
-  },
-);
+  instance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      console.error(`[API ERROR] ${baseURL}`, error);
+      return Promise.reject(error);
+    },
+  );
+
+  return instance;
+}

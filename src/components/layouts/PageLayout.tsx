@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "#components/searchInput/Navigation";
+import Navigation from "#components/navigation/Navigation";
 
 interface Props {
   children: React.ReactNode;

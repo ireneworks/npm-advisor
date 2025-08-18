@@ -1,9 +1,9 @@
 import useSWR from "swr";
-import { NpmApiType } from "#types/model/api";
-import { buildNpmUrl } from "#helpers/npmUrlBuilder";
-import { npmFetcher } from "#apis/configs/swrConfig";
+import { TNpmApi } from "#types/model/api";
+import { buildNpmUrl } from "#helpers/urlBuilder";
+import { npmFetcher } from "#apis/swrFetcher";
 
-export function useNpmSWR<T>(api: NpmApiType | null) {
+export function useNpmSWR<T>(api: TNpmApi | null) {
   const key = api ? buildNpmUrl(api) : null;
 
   const { data, error, isValidating } = useSWR<T>(key, npmFetcher);
