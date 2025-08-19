@@ -1,16 +1,30 @@
 import { Github, House } from "lucide-react";
-import { Button } from "#components/ui/button";
+import { Button } from "#components/shadcn/button";
 import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
+import { CHECKER } from "#constants/navigation";
 
 export default function PackageDetailContainer() {
-  const { latestVersion, lastUpdated, homepageUrl, repositoryUrl } =
-    usePackageDetailStore();
+  const { push } = useRouter();
+
+  const {
+    packageName,
+    latestVersion,
+    lastUpdated,
+    homepageUrl,
+    repositoryUrl,
+  } = usePackageDetailStore();
+
+  const handleCheckEnvironment = useCallback(() => {
+    push(CHECKER + `?package=${packageName}`);
+  }, [packageName, push]);
 
   return (
     <div className="w-1/4 flex-shrink-0">
       {latestVersion && (
         <p>
-          <b>Latest version</b> {latestVersion}
+          <b>Version</b> {latestVersion}
         </p>
       )}
       {lastUpdated && (
@@ -34,7 +48,9 @@ export default function PackageDetailContainer() {
           </div>
         </a>
       )}
-      <Button className="cursor-pointer">Check my environment</Button>
+      <Button className="cursor-pointer" onClick={handleCheckEnvironment}>
+        Check my environment
+      </Button>
     </div>
   );
 }

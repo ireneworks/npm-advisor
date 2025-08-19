@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent } from "#components/ui/card";
+import { Card, CardContent } from "#components/shadcn/card";
 import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
 import { Nullable } from "#types/util/nullable";
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { Input } from "#components/ui/input";
-import { Button } from "#components/ui/button";
+import { Input } from "#components/shadcn/input";
+import { Button } from "#components/shadcn/button";
 import { useRouter } from "next/navigation";
 import { useDebounce } from "#hooks/useDebounce";
 import { useNpm } from "#hooks/useNpm";
@@ -35,7 +35,7 @@ export default function SearchInputContainer() {
       setQuery("");
       setIsFocused(false);
       inputRef.current?.blur();
-      void push(DETAIL + "/" + packageName);
+      void push(DETAIL + "/" + encodeURIComponent(packageName));
     },
     [push],
   );

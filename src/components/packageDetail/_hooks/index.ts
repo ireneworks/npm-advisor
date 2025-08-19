@@ -2,7 +2,7 @@ import { useParams } from "next/navigation";
 import { useNpm } from "#hooks/useNpm";
 import { INpmDetail } from "#types/model/npmPackage";
 import { useGithubReadMe } from "#hooks/useGithubReadMe";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
 import {
   detailProcessing,
@@ -10,7 +10,10 @@ import {
 } from "#components/packageDetail/_helpers/packageDetailProcessing";
 
 export function useDetailFetcher() {
-  const { name: packageName } = useParams();
+  const { name } = useParams();
+  const packageName = useMemo(() => {
+    return decodeURIComponent(name as string);
+  }, [name]);
 
   const { data: detail, isLoading: isLoadingNpm } = useNpm<INpmDetail>({
     type: "detail",

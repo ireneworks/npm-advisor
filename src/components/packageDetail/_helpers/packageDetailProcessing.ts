@@ -24,19 +24,5 @@ export function detailProcessing(
 }
 
 export function readMeProcessing(data: string) {
-  const readMe = String(data || "");
-
-  return readMe
-    .split("\n")
-    .filter(
-      (line) =>
-        !/^\s*(\[[^\]]*?\]\([^)]*?\)\s*)+$/g.test(line.trim()) &&
-        !/^\s*(\[[^\]]*?\]\[[^\]]*?\]\s*)+$/g.test(line.trim()),
-    )
-    .map((line) =>
-      line
-        .replace(/\[!\[[^\]]*?\]\([^\)]*?\)\]\([^\)]*?\)/g, "")
-        .replace(/\[!\[[^\]]*?\]\[[^\]]*?\]\]\[[^\]]*?\]/g, ""),
-    )
-    .join("\n");
+  return String(data || "");
 }

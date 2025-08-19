@@ -7,15 +7,28 @@ const openai = new OpenAI({
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { prompt } = body;
+    const { prompt } = await req.json();
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a professional assistant. Please give your advice for npm packages.",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      temperature: 0.7,
+      max_completion_tokens: 3000,
     });
 
-    return NextResponse.json({ result: response.choices[0].message.content });
+    return NextResponse.json({
+      result: response.choices[0].message.content ?? "",
+    });
   } catch (err: any) {
     console.error(err);
     return new Response(
