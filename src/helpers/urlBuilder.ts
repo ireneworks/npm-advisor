@@ -3,7 +3,7 @@ import { TNpmApi } from "#types/model/api";
 export function buildNpmUrl(api: TNpmApi): string {
   switch (api.type) {
     case "search":
-      return `/-/v1/search?text=${api.query}&size=${api.size ?? 5}`;
+      return `/-/v1/search?text=${api.query}&size=${api.size ?? 5}&from=${0}`;
     case "detail":
       return `/${api.name}`;
     default:

@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { IPackageDetailState } from "#components/packageDetail/packageDetail.interface";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { buildRepositoryUrl } from "#helpers/urlBuilder";
+import { calculateDayFromNow } from "#helpers/date";
 
 dayjs.extend(relativeTime);
 
@@ -24,7 +25,7 @@ export function detailProcessing(
     description: description ?? "",
     license: license ?? "",
     latestVersion: distTags.latest,
-    lastUpdated: dayjs(String(time)).fromNow(),
+    lastUpdated: calculateDayFromNow(String(time)), // TODO check type
     repositoryUrl: repository ? buildRepositoryUrl(repository.url) : "",
     homepageUrl: homepage ? homepage : "",
   };

@@ -36,8 +36,8 @@ export interface INpmPackage {
   };
 }
 
-export interface INpmSearchResponse {
-  objects: INpmPackage[];
+export interface INpmSearchResponse<T> {
+  objects: T[];
   total: number;
   time: string; // ISO date string
 }
@@ -136,4 +136,59 @@ interface Dist {
     sig: string;
     keyid: string;
   }[];
+}
+
+export interface INpmSearchResult {
+  downloads: Downloads;
+  dependents: string;
+  updated: string;
+  searchScore: number;
+  package: Package;
+  score: Score;
+  flags: Flags;
+}
+
+interface Downloads {
+  monthly: number;
+  weekly: number;
+}
+
+interface Package {
+  name: string;
+  keywords: string[];
+  version: string;
+  description: string;
+  sanitized_name: string;
+  publisher: Publisher;
+  maintainers: Maintainer[];
+  license: string;
+  date: string;
+  links: Links;
+}
+
+interface Publisher {
+  email: string;
+  username: string;
+}
+
+interface Links {
+  homepage: string;
+  repository: string;
+  bugs: string;
+  npm: string;
+}
+
+interface Score {
+  final: number;
+  detail: Detail;
+}
+
+interface Detail {
+  popularity: number;
+  quality: number;
+  maintenance: number;
+}
+
+interface Flags {
+  insecure: number;
 }

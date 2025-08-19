@@ -1,0 +1,14 @@
+"use client";
+import PageLayout from "#components/layouts/PageLayout";
+import PackageSearchListContainer from "#components/packageSearchList/_containers/PackageSearchListContainer";
+
+export default function List() {
+  return (
+    <PageLayout>
+      <div className="flex-col gap-7 pt-6 pb-24 px-12">
+        <h1 className="font-black text-2xl mb-6">Result</h1>
+        <PackageSearchListContainer />
+      </div>
+    </PageLayout>
+  );
+}

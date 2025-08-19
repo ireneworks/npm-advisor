@@ -22,7 +22,7 @@ export default function Page() {
 
   return (
     <PageLayout>
-      <div className="flex-col gap-7 pt-6 pb-24 px-12 ">
+      <div className="flex-col gap-7 pt-6 pb-24 px-12">
         <PackageDetailContainer />
         <CheckerContainer />
         {isVisible && (

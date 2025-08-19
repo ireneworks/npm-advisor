@@ -4,7 +4,7 @@ import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
 import { Nullable } from "#types/util/nullable";
 
 interface Props {
-  data: Nullable<INpmSearchResponse>;
+  data: Nullable<INpmSearchResponse<INpmPackage>>;
   onSelect: (packageName: string) => void;
   error: boolean;
   isVisible: boolean;

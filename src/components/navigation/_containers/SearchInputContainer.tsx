@@ -1,12 +1,18 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Input } from "#components/shadcn/input";
 import { Button } from "#components/shadcn/button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebounce } from "#hooks/useDebounce";
 import { useNpm } from "#hooks/useNpm";
-import { INpmSearchResponse } from "#types/model/npmPackage";
+import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
 import { TNpmApi } from "#types/model/api";
-import { DETAIL } from "#constants/navigation";
+import { DETAIL, LIST } from "#constants/navigation";
 import AutoFillList from "#components/navigation/_components/AutoFillList";
 
 export default function SearchInputContainer() {
@@ -15,6 +21,16 @@ export default function SearchInputContainer() {
   const [highlightIndex, setHighlightIndex] = useState(-1);
 
   const { push } = useRouter();
+  const path = usePathname();
+  const searchParam = useSearchParams();
+
+  const searchQuery = useMemo(() => {
+    return decodeURIComponent(searchParam.get("q"));
+  }, [searchParam]);
+
+  const isSearchListPage = useMemo(() => {
+    return path === LIST;
+  }, [path]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,7 +41,7 @@ export default function SearchInputContainer() {
       : null;
   }, [debouncedQuery]);
 
-  const { data, error } = useNpm<INpmSearchResponse>(searchKey);
+  const { data, error } = useNpm<INpmSearchResponse<INpmPackage>>(searchKey);
 
   const isAutofilled = useMemo(() => {
     return isFocused && query.length >= 2;
@@ -65,6 +81,12 @@ export default function SearchInputContainer() {
     [data, highlightIndex, onSelect],
   );
 
+  useEffect(() => {
+    if (isSearchListPage) {
+      setQuery(searchQuery);
+    }
+  }, [isSearchListPage, searchQuery]);
+
   return (
     <div className="relative w-full">
       <div className="flex gap-2">
@@ -82,7 +104,11 @@ export default function SearchInputContainer() {
           }
           onKeyDown={handleKeyDown}
         />
-        <Button type="button" className="cursor-pointer flex-none">
+        <Button
+          type="button"
+          className="cursor-pointer flex-none"
+          onClick={() => void push(LIST + "?q=" + encodeURIComponent(query))}
+        >
           Search
         </Button>
       </div>

@@ -1,5 +1,4 @@
 "use client";
-
 import Footer from "#components/footer/Footer";
 import SearchInputContainer from "#components/navigation/_containers/SearchInputContainer";
 

@@ -5,7 +5,6 @@ import { npmFetcher } from "#apis/swrFetcher";
 
 export function useNpm<T>(api: TNpmApi | null) {
   const key = api ? buildNpmUrl(api) : null;
-
   const { data, error, isValidating } = useSWR<T>(key, npmFetcher);
 
   return {
