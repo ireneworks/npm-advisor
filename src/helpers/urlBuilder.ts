@@ -38,3 +38,31 @@ export function buildGithubReadMeUrl(
 
   throw new Error(`Unsupported repo format: ${repo}`);
 }
+
+export function buildRepositoryUrl(url?: string): string | null {
+  if (!url) return null;
+
+  let cleanUrl = url.trim();
+
+  if (cleanUrl.startsWith("git+")) {
+    cleanUrl = cleanUrl.replace(/^git\+/, "");
+  }
+
+  if (cleanUrl.startsWith("git@")) {
+    // git@github.com:user/repo.git → github.com/user/repo.git
+    cleanUrl = cleanUrl.replace("git@", "").replace(":", "/");
+    cleanUrl = `https://${cleanUrl}`;
+  }
+
+  cleanUrl = cleanUrl.replace(/\.git$/, "");
+
+  if (cleanUrl.startsWith("ssh://")) {
+    cleanUrl = cleanUrl.replace(/^ssh:\/\//, "https://");
+  }
+
+  if (!cleanUrl.startsWith("http")) {
+    cleanUrl = `https://${cleanUrl}`;
+  }
+
+  return cleanUrl;
+}

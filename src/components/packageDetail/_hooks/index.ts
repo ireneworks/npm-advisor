@@ -35,9 +35,19 @@ export function useDetailFetcher() {
 }
 
 export function useCheckerFetcher() {
-  const { trigger, data, isLoading } = useOpenAiMutation();
+  const { name } = useParams();
 
-  const { setCheckerResult } = usePackageDetailStore();
+  const { trigger, data, isLoading } = useOpenAiMutation();
+  const { setCheckerResult, packageName } = usePackageDetailStore();
+
+  useEffect(() => {
+    const currentPackageName = decodeURIComponent(name as string);
+
+    if (currentPackageName !== packageName) {
+      // Reset checker result when package name changes
+      setCheckerResult(undefined);
+    }
+  }, [name, packageName, setCheckerResult]);
 
   useEffect(() => {
     if (!isLoading && data) {

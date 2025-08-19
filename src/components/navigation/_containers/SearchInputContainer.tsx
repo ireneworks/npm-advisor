@@ -12,6 +12,7 @@ import AutoFillList from "#components/navigation/_components/AutoFillList";
 export default function SearchInputContainer() {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [highlightIndex, setHighlightIndex] = useState(-1);
 
   const { push } = useRouter();
 
@@ -40,6 +41,30 @@ export default function SearchInputContainer() {
     [push],
   );
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!data || !data.objects.length) return;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setHighlightIndex((prev) =>
+          prev < data.objects.length - 1 ? prev + 1 : 0,
+        );
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setHighlightIndex((prev) =>
+          prev > 0 ? prev - 1 : data.objects.length - 1,
+        );
+      } else if (e.key === "Enter") {
+        if (highlightIndex >= 0) {
+          e.preventDefault();
+          onSelect(data.objects[highlightIndex].package.name);
+        }
+      }
+    },
+    [data, highlightIndex, onSelect],
+  );
+
   return (
     <div className="relative w-full">
       <div className="flex gap-2">
@@ -55,6 +80,7 @@ export default function SearchInputContainer() {
               setIsFocused(false);
             }, 100)
           }
+          onKeyDown={handleKeyDown}
         />
         <Button type="button" className="cursor-pointer flex-none">
           Search
@@ -65,6 +91,7 @@ export default function SearchInputContainer() {
         onSelect={onSelect}
         isVisible={isAutofilled}
         error={error}
+        highlightIndex={highlightIndex}
       />
     </div>
   );

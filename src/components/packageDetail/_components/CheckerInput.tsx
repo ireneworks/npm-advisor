@@ -26,7 +26,7 @@ export default function CheckerInput({
       </h1>
       <div className="flex flex-col gap-2">
         <Textarea
-          className="max-h-[300px]"
+          className="max-h-[200px]"
           placeholder="Paste package.json"
           value={json}
           onChange={(e) => setJson(e.target.value)}

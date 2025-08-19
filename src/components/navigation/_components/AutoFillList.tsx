@@ -8,6 +8,7 @@ interface Props {
   onSelect: (packageName: string) => void;
   error: boolean;
   isVisible: boolean;
+  highlightIndex: number;
 }
 
 export default function AutoFillList({
@@ -15,6 +16,7 @@ export default function AutoFillList({
   isVisible,
   onSelect,
   error,
+  highlightIndex,
 }: Props) {
   if (!isVisible) return null;
 
@@ -23,10 +25,12 @@ export default function AutoFillList({
       <CardContent className="p-0">
         {error && <p>Please try again.</p>}
         {data ? (
-          data.objects.map((item: INpmPackage) => (
+          data.objects.map((item: INpmPackage, index: number) => (
             <div
               key={item.package.name}
-              className="py-2 px-4 hover:bg-gray-200 cursor-pointer truncate"
+              className={`py-2 px-4 cursor-pointer truncate ${
+                index === highlightIndex ? "bg-gray-200" : "hover:bg-gray-200"
+              }`}
               onMouseDown={() => onSelect(item.package.name)}
             >
               {item.package.name} — {item.package.description}

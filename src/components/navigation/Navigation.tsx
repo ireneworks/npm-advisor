@@ -12,7 +12,7 @@ export default function Navigation() {
   return (
     <div className="flex gap-5 py-5 px-12 items-center border-b-1">
       <h1
-        className="p-0 m-0 cursor-pointer whitespace-nowrap font-bold"
+        className="p-0 m-0 cursor-pointer whitespace-nowrap font-black"
         onClick={onClickLogo}
       >
         NPM Advisor

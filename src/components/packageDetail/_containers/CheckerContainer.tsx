@@ -27,7 +27,7 @@ export default function CheckerContainer() {
   };
 
   return (
-    <div className="mt-12 mb-8">
+    <div className="mt-10 mb-8">
       <Card className="p-6">
         <CardContent className="p-0">
           <CheckerInput

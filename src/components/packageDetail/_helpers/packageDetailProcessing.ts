@@ -2,6 +2,7 @@ import { INpmDetail } from "#types/model/npmPackage";
 import dayjs from "dayjs";
 import { IPackageDetailState } from "#components/packageDetail/packageDetail.interface";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { buildRepositoryUrl } from "#helpers/urlBuilder";
 
 dayjs.extend(relativeTime);
 
@@ -24,7 +25,7 @@ export function detailProcessing(
     license: license ?? "",
     latestVersion: distTags.latest,
     lastUpdated: dayjs(String(time)).fromNow(),
-    repositoryUrl: repository ? repository.url.slice(4) : "",
+    repositoryUrl: repository ? buildRepositoryUrl(repository.url) : "",
     homepageUrl: homepage ? homepage : "",
   };
 }

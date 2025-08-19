@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Npm Finder",
-  description: "Check npm packages and my environment",
+  title: "Npm Advisor",
+  description: "Get advice on which NPM packages might fit your environment.",
 };
 
 export default function RootLayout({
