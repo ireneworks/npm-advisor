@@ -22,13 +22,13 @@ export async function POST(req: Request) {
           content: prompt,
         },
       ],
+      response_format: { type: "json_object" },
       temperature: 0.7,
       max_completion_tokens: 3000,
     });
 
-    return NextResponse.json({
-      result: response.choices[0].message.content ?? "",
-    });
+    const parsed = JSON.parse(response.choices[0].message.content ?? "{}");
+    return NextResponse.json(parsed);
   } catch (err: any) {
     console.error(err);
     return new Response(
