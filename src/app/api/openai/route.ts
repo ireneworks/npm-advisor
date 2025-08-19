@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 
     const parsed = JSON.parse(response.choices[0].message.content ?? "{}");
     return NextResponse.json(parsed);
-  } catch (err: any) {
+  } catch (err) {
     console.error(err);
     return new Response(
       JSON.stringify({ error: err.message || "Unknown error" }),

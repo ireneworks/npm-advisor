@@ -1,5 +1,4 @@
 import { Card, CardContent } from "#components/shadcn/card";
-import CodeBlock from "#components/packageDetail/_components/CodeBlock";
 import { ICheckerResponse } from "#components/packageDetail/packageDetail.interface";
 import { useMemo } from "react";
 import CheckerResultList from "#components/packageDetail/_components/CheckerResultList";
@@ -62,7 +61,7 @@ export default function CheckerResult({ checkerResult }: Props) {
               />
             )}
             <p className="text-sm font-bold mt-4">Sample Code</p>
-            <CodeBlock>{sampleCode}</CodeBlock>
+            <p>{sampleCode}</p>
           </>
         )}
       </CardContent>

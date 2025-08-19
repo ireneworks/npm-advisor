@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism as prismTheme } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const CodeBlock: React.FC<{
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   node?: any;
   inline?: boolean;
   className?: string;

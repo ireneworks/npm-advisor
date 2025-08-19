@@ -106,7 +106,7 @@ interface Version {
   exports: Export;
   _npmVersion: string;
   description: string;
-  directories: any;
+  directories: unknown;
   _nodeVersion: string;
   dependencies: { "loose-envify": string; "object-assing": string };
   _npmOperationalInternal: {
