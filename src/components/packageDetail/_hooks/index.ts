@@ -8,6 +8,7 @@ import {
   detailProcessing,
   readMeProcessing,
 } from "#components/packageDetail/_helpers/packageDetailProcessing";
+import { useOpenAiMutation } from "#hooks/useOpenAiMutation";
 
 export function useDetailFetcher() {
   const { name } = useParams();
@@ -31,4 +32,18 @@ export function useDetailFetcher() {
       setReadme(readMeProcessing(String(readMe)));
     }
   }, [detail, isLoadingGithub, isLoadingNpm, readMe, setDetail, setReadme]);
+}
+
+export function useCheckerFetcher() {
+  const { trigger, data, isLoading } = useOpenAiMutation();
+
+  const { setCheckerResult } = usePackageDetailStore();
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setCheckerResult(data);
+    }
+  }, [data, isLoading, setCheckerResult]);
+
+  return { trigger, isLoading };
 }

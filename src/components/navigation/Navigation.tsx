@@ -15,7 +15,7 @@ export default function Navigation() {
         className="p-0 m-0 cursor-pointer whitespace-nowrap font-bold"
         onClick={onClickLogo}
       >
-        NPM Checker
+        NPM Advisor
       </h1>
       <SearchInputContainer />
     </div>

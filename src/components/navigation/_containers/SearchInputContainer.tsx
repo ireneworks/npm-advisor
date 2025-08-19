@@ -46,7 +46,7 @@ export default function SearchInputContainer() {
         <Input
           type="text"
           className="flex-1"
-          placeholder="Enter open source package"
+          placeholder="Enter NPM package"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
