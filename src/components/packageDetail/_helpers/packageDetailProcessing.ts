@@ -4,6 +4,8 @@ import { IPackageDetailState } from "#components/packageDetail/packageDetail.int
 import relativeTime from "dayjs/plugin/relativeTime";
 import { buildRepositoryUrl } from "#helpers/urlBuilder";
 import { calculateDayFromNow } from "#helpers/date";
+import { IGithubReadMe } from "#types/model/github";
+import { decodeBase64 } from "#helpers/decodeBase64";
 
 dayjs.extend(relativeTime);
 
@@ -31,6 +33,6 @@ export function detailProcessing(
   };
 }
 
-export function readMeProcessing(data: string) {
-  return String(data || "");
+export function readMeProcessing(data: IGithubReadMe): string {
+  return decodeBase64(data.content);
 }

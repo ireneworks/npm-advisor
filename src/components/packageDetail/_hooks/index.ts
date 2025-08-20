@@ -3,12 +3,16 @@ import { useNpm } from "#hooks/useNpm";
 import { INpmDetail } from "#types/model/npmPackage";
 import { useGithubReadMe } from "#hooks/useGithubReadMe";
 import { useEffect, useMemo } from "react";
-import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
+import {
+  packageDetailState,
+  usePackageDetailStore,
+} from "#components/packageDetail/_stores/usePackageDetailStore";
 import {
   detailProcessing,
   readMeProcessing,
 } from "#components/packageDetail/_helpers/packageDetailProcessing";
 import { useOpenAiMutation } from "#hooks/useOpenAiMutation";
+import { IGithubReadMe } from "#types/model/github";
 
 export function useDetailFetcher() {
   const { name } = useParams();
@@ -20,16 +24,24 @@ export function useDetailFetcher() {
     type: "detail",
     name: packageName as string,
   });
-  const { data: readMe, isLoading: isLoadingGithub } = useGithubReadMe(
-    detail ? detail.repository?.url : null,
-  );
+  const { data: readMe, isLoading: isLoadingGithub } =
+    useGithubReadMe<IGithubReadMe>(detail?.repository?.url);
 
   const { setDetail, setReadme } = usePackageDetailStore();
 
   useEffect(() => {
+    const currentPackageName = decodeURIComponent(name as string);
+
+    if (currentPackageName !== packageName) {
+      // Reset detail when package name changes
+      setDetail(packageDetailState);
+    }
+  }, [name, packageName, setDetail]);
+
+  useEffect(() => {
     if (!isLoadingNpm && !isLoadingGithub) {
       setDetail(detailProcessing(detail));
-      setReadme(readMeProcessing(String(readMe)));
+      setReadme(readMeProcessing(readMe));
     }
   }, [detail, isLoadingGithub, isLoadingNpm, readMe, setDetail, setReadme]);
 }

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -14,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
-      </body>
+      <body className={`antialiased`}>{children}</body>
     </html>
   );
 }

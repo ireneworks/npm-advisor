@@ -81,6 +81,8 @@ export default function SearchInputContainer() {
         if (highlightIndex >= 0) {
           onSelect(data.objects[highlightIndex].package.name);
         } else {
+          setIsFocused(false);
+          inputRef.current.blur();
           onClickSearch();
         }
       }
@@ -100,6 +102,7 @@ export default function SearchInputContainer() {
         <Input
           type="text"
           className="flex-1"
+          ref={inputRef}
           placeholder="Enter NPM package"
           value={query}
           onChange={(e) => setQuery(e.target.value)}

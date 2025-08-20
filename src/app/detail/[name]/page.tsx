@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import PageLayout from "#components/layouts/PageLayout";
 import PackageDetailContainer from "#components/packageDetail/_containers/PackageDetailContainer";
 import { useDetailFetcher } from "#components/packageDetail/_hooks";
@@ -23,14 +23,18 @@ export default function Page() {
   return (
     <PageLayout>
       <div className="flex-col gap-7 pt-6 pb-24 px-12">
-        <PackageDetailContainer />
+        <Suspense fallback={<h1>loading</h1>}>
+          <PackageDetailContainer />
+        </Suspense>
         <CheckerContainer />
-        {isVisible && (
-          <>
-            <Separator />
-            <MarkdownRenderer content={readMe} />
-          </>
-        )}
+        <Suspense fallback={<h1>loading readme</h1>}>
+          {isVisible && (
+            <>
+              <Separator />
+              <MarkdownRenderer content={readMe} />
+            </>
+          )}
+        </Suspense>
       </div>
     </PageLayout>
   );

@@ -11,32 +11,20 @@ export function buildNpmUrl(api: TNpmApi): string {
   }
 }
 
-export function buildGithubReadMeUrl(
-  repo: string,
-  branch: string = "main",
-): string {
-  if (repo.startsWith("git+")) {
-    repo = repo.slice(4);
+export function buildGithubReadMeUrl(url: string): string {
+  let match = url.match(/github\.com\/([^/]+)\/([^/]+?)(\.git)?$/);
+  if (match) {
+    const [, owner, repo] = match;
+    return `${owner}/${repo}/readme`;
   }
 
-  if (repo.startsWith("git@")) {
-    repo = repo.replace("git@", "https://");
-    repo = repo.replace(":", "/");
+  match = url.match(/git@github\.com:([^/]+)\/([^/]+?)(\.git)?$/);
+  if (match) {
+    const [, owner, repo] = match;
+    return `${owner}/${repo}/readme`;
   }
 
-  if (repo.endsWith(".git")) {
-    repo = repo.slice(0, -4);
-  }
-
-  if (repo.includes("github.com")) {
-    const [, owner, name] =
-      repo.match(/github\.com[:/](.+?)\/(.+?)(?:$|\/)/) || [];
-    if (owner && name) {
-      return `/${owner}/${name}/${branch}/README.md`;
-    }
-  }
-
-  throw new Error(`Unsupported repo format: ${repo}`);
+  return null;
 }
 
 export function buildRepositoryUrl(url?: string): string | null {
