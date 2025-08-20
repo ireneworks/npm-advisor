@@ -3,7 +3,7 @@ import Footer from "#components/footer/Footer";
 import SearchInputContainer from "#components/navigation/_containers/SearchInputContainer";
 import { Suspense } from "react";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <div className="pt-20 pb-24 px-12">

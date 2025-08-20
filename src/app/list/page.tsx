@@ -4,7 +4,7 @@ import PackageSearchListContainer from "#components/packageSearchList/_container
 import { Suspense } from "react";
 import { ListSkeletonLoading } from "#components/skeletonLoading/ListSkeletonLoading";
 
-export default function List() {
+export default function ListPage() {
   return (
     <PageLayout>
       <div className="flex-col gap-7 pt-6 pb-24 px-12">

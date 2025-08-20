@@ -8,7 +8,7 @@ import { usePackageDetailStore } from "#components/packageDetail/_stores/usePack
 import { Separator } from "#components/shadcn/separator";
 import CheckerContainer from "#components/packageDetail/_containers/CheckerContainer";
 
-export default function Page() {
+export default function DetailPage() {
   useDetailFetcher();
   const { readMe } = usePackageDetailStore();
 

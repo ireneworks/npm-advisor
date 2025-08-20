@@ -41,7 +41,9 @@ export function useDetailFetcher() {
   useEffect(() => {
     if (!isLoadingNpm && !isLoadingGithub) {
       setDetail(detailProcessing(detail));
-      setReadme(readMeProcessing(readMe));
+      if (readMe?.content) {
+        setReadme(readMeProcessing(readMe.content));
+      }
     }
   }, [detail, isLoadingGithub, isLoadingNpm, readMe, setDetail, setReadme]);
 }
