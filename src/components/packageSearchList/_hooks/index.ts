@@ -1,4 +1,7 @@
-import { usePackageSearchListStore } from "#components/packageSearchList/_stores/usePackageSearchListStore";
+import {
+  packageSearchListState,
+  usePackageSearchListStore,
+} from "#components/packageSearchList/_stores/usePackageSearchListStore";
 import { useNpm } from "#hooks/useNpm";
 import { INpmSearchResponse, INpmSearchResult } from "#types/model/npmPackage";
 import { REQUEST_SIZE } from "#components/packageSearchList/packageSearchList.constant";
@@ -23,6 +26,12 @@ export function usePackageSearchListFetcher(query: Nullable<string>) {
       setSearchList(packageSearchListProcessing(data));
     }
   }, [data, isLoading, setSearchList]);
+
+  useEffect(() => {
+    return () => {
+      setSearchList(packageSearchListState);
+    };
+  }, [setSearchList]);
 
   return { setPage, isLoading };
 }

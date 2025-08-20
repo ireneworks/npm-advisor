@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useRef } from "react";
 import InfiniteScroll from "#components/infiniteScroll/InfiniteScroll";
 import { usePackageSearchListFetcher } from "#components/packageSearchList/_hooks";

@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback } from "react";
 import ScrollToTop from "#components/scrollToTop/ScrollToTop";
 import Footer from "#components/footer/Footer";

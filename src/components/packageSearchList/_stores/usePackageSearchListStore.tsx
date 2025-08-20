@@ -1,7 +1,7 @@
 import { create } from "zustand/react";
 import { IPackageSearchListState } from "#components/packageSearchList/packageSearchList.interface";
 
-const packageSearchListState: IPackageSearchListState = {
+export const packageSearchListState: IPackageSearchListState = {
   total: 0,
   list: [],
 };

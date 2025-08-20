@@ -1,5 +1,6 @@
 "use client";
 import { Suspense, useMemo } from "react";
+import { useParams } from "next/navigation";
 import PageLayout from "#components/layouts/PageLayout";
 import PackageDetailContainer from "#components/packageDetail/_containers/PackageDetailContainer";
 import { useDetailFetcher } from "#components/packageDetail/_hooks";
@@ -9,33 +10,28 @@ import { Separator } from "#components/shadcn/separator";
 import CheckerContainer from "#components/packageDetail/_containers/CheckerContainer";
 
 export default function DetailPage() {
-  useDetailFetcher();
-  const { readMe } = usePackageDetailStore();
+  const { name } = useParams();
+  const packageName = useMemo(() => {
+    return decodeURIComponent(name as string);
+  }, [name]);
 
-  const isVisible = useMemo(() => {
-    return (
-      typeof readMe === "string" &&
-      readMe.trim() !== "" &&
-      readMe.trim() !== "undefined"
-    );
-  }, [readMe]);
+  useDetailFetcher(packageName);
+  const { readMe } = usePackageDetailStore();
 
   return (
     <PageLayout>
-      <div className="flex-col gap-7 pt-6 pb-24 px-12">
-        <Suspense fallback={<h1>loading</h1>}>
+      <Suspense fallback={<h1>loading</h1>}>
+        <div className="flex-col gap-7 pt-6 pb-24 px-12">
           <PackageDetailContainer />
-        </Suspense>
-        <CheckerContainer />
-        <Suspense fallback={<h1>loading readme</h1>}>
-          {isVisible && (
+          <CheckerContainer packageName={packageName} />
+          {readMe && (
             <>
               <Separator />
               <MarkdownRenderer content={readMe} />
             </>
           )}
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </PageLayout>
   );
 }

@@ -5,7 +5,9 @@ import { githubReadMeFetcher } from "#apis/swrFetcher";
 export function useGithubReadMe<T>(url: string | null) {
   const key = url ? buildGithubReadMeUrl(url) : null;
 
-  const { data, error, isValidating } = useSWR<T>(key, githubReadMeFetcher);
+  const { data, error, isValidating } = useSWR<T>(key, githubReadMeFetcher, {
+    onError: () => {}, // TODO error handling
+  });
 
   return {
     data,
