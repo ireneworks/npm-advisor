@@ -1,4 +1,4 @@
-import { buildGithubReadMeUrl } from "#helpers/urlBuilder";
+import { buildGithubReadMeUrl } from "#helpers/apiUrlBuilder";
 import useSWR from "swr";
 import { githubReadMeFetcher } from "#apis/swrFetcher";
 

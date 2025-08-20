@@ -2,7 +2,7 @@ import { INpmDetail } from "#types/model/npmPackage";
 import dayjs from "dayjs";
 import { IPackageDetailState } from "#components/packageDetail/packageDetail.interface";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { buildRepositoryUrl } from "#helpers/urlBuilder";
+import { buildGithubRepositoryUrl } from "#helpers/apiUrlBuilder";
 import { calculateDayFromNow } from "#helpers/date";
 import { decodeBase64 } from "#components/packageDetail/_helpers/decodeBase64";
 
@@ -27,7 +27,7 @@ export function detailProcessing(
     license: license ?? "",
     latestVersion: distTags.latest,
     lastUpdated: calculateDayFromNow(String(time)), // TODO check type
-    repositoryUrl: repository ? buildRepositoryUrl(repository.url) : "",
+    repositoryUrl: repository ? buildGithubRepositoryUrl(repository.url) : "",
     homepageUrl: homepage ? homepage : "",
   };
 }

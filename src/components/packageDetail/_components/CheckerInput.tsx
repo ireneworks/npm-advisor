@@ -21,7 +21,7 @@ export default function CheckerInput({
     <>
       <h1 className="font-bold text-xl mb-3">
         Get advice for{" "}
-        <span className="text-emerald-500 inline-block">{packageName}</span> in
+        <span className="text-indigo-500 inline-block">{packageName}</span> in
         my development environment.
       </h1>
       <div className="flex flex-col gap-2">

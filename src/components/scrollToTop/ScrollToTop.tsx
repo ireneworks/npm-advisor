@@ -28,7 +28,7 @@ export default function ScrollToTop() {
         <Button
           onClick={scrollToTop}
           variant="outline"
-          className="fixed right-10 bottom-10 h-[42px] shadow-lg rounded-full cursor-pointer"
+          className="fixed h-[42px] shadow-lg rounded-full cursor-pointer right-4 bottom-4 lg:right-10 lg:bottom-10"
         >
           <ChevronUp />
         </Button>

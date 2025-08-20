@@ -1,5 +1,6 @@
 module.exports = {
   content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -44,9 +45,7 @@ module.exports = {
         lg: "var(--radius-lg)",
         xl: "var(--radius-xl)",
       },
-      screens: {
-        "max-tablet": { max: "1023px" },
-      },
+      screens: {},
     },
   },
 };

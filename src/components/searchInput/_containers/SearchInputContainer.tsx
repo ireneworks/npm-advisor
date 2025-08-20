@@ -14,7 +14,7 @@ import { useNpm } from "#hooks/useNpm";
 import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
 import { TNpmApi } from "#types/model/api";
 import { DETAIL, LIST } from "#constants/navigation";
-import AutoFillList from "#components/navigation/_components/AutoFillList";
+import AutoFillList from "#components/searchInput/_components/AutoFillList";
 
 export default function SearchInputContainer() {
   const [query, setQuery] = useState("");
@@ -102,7 +102,7 @@ export default function SearchInputContainer() {
       <div className="flex gap-2">
         <Input
           type="text"
-          className="flex-1"
+          className="selection:bg-gray-200 selection:text-gray-900 text-sm flex-1 text-gray-900 rounded-sm focus-visible:ring-gray-100 placeholder:text-sm lg:placeholder:text-base placeholder:text-gray-400 lg:text-base lg:h-13"
           ref={inputRef}
           placeholder="Enter NPM package"
           value={query}
@@ -117,7 +117,7 @@ export default function SearchInputContainer() {
         />
         <Button
           type="button"
-          className="cursor-pointer flex-none"
+          className="bg-indigo-500 hover:bg-indigo-700 rounded-sm cursor-pointer flex-none text-sm lg:text-base lg:h-13 lg:w-30"
           onClick={onClickSearch}
         >
           Search

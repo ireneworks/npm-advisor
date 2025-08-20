@@ -21,7 +21,7 @@ export default function AutoFillList({
   if (!isVisible) return null;
 
   return (
-    <Card className="absolute top-full w-full mt-2 p-0 overflow-hidden rounded-md">
+    <Card className="absolute top-full w-full mt-2 p-0 overflow-hidden rounded-md text-gray-900">
       <CardContent className="p-0">
         {error && <p>Please try again.</p>}
         {data ? (

@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { TNpmApi } from "#types/model/api";
-import { buildNpmUrl } from "#helpers/urlBuilder";
+import { buildNpmUrl } from "#helpers/apiUrlBuilder";
 import { npmFetcher } from "#apis/swrFetcher";
 
 export function useNpm<T>(api: TNpmApi | null) {

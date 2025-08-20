@@ -7,8 +7,10 @@ import { ListSkeletonLoading } from "#components/skeletonLoading/ListSkeletonLoa
 export default function ListPage() {
   return (
     <PageLayout>
-      <div className="flex-col gap-7 pt-6 pb-24 px-12">
-        <h1 className="font-black text-2xl mb-6">Result</h1>
+      <div className="flex-col pt-4 pb-12 px-4 lg:pt-6 lg;pb-24 lg:px-12">
+        <h1 className="text-gray-900 font-bold text-lg mb-4 lg:text-2xl lg:mb-6">
+          Result
+        </h1>
         <Suspense fallback={<ListSkeletonLoading />}>
           <PackageSearchListContainer />
         </Suspense>

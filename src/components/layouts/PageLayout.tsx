@@ -2,7 +2,7 @@
 import React, { useCallback } from "react";
 import ScrollToTop from "#components/scrollToTop/ScrollToTop";
 import Footer from "#components/footer/Footer";
-import SearchInputContainer from "#components/navigation/_containers/SearchInputContainer";
+import SearchInputContainer from "#components/searchInput/_containers/SearchInputContainer";
 import { useRouter } from "next/navigation";
 import { HOME } from "#constants/navigation";
 
@@ -18,11 +18,11 @@ export default function PageLayout({ children }: Props) {
   }, [push]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <nav className="sticky top-0 z-1 bg-white">
-        <div className="flex gap-5 py-5 px-12 items-center border-b-1">
+        <div className="px-4 py-3 items-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex gap-1 lg:gap-5 lg:py-5 lg:px-12 ">
           <h1
-            className="p-0 m-0 cursor-pointer whitespace-nowrap font-black"
+            className="text-sm leading-3.5 p-0 m-0 cursor-pointer font-black text-indigo-600 lg:text-xl lg:whitespace-nowrap"
             onClick={onClickLogo}
           >
             NPM Advisor
@@ -30,11 +30,11 @@ export default function PageLayout({ children }: Props) {
           <SearchInputContainer />
         </div>
       </nav>
-      <main>
+      <main className={"flex-1"}>
         {children}
         <ScrollToTop />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

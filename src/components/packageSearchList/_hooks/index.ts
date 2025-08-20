@@ -19,6 +19,7 @@ export function usePackageSearchListFetcher(query: Nullable<string>) {
     size: page * REQUEST_SIZE,
     query: query,
     offset: 0,
+    sort: "relevant",
   });
 
   useEffect(() => {

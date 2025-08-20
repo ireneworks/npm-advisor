@@ -1,9 +1,20 @@
 import { TNpmApi } from "#types/model/api";
+import { npmSortValues } from "#constants/npmSort";
 
 export function buildNpmUrl(api: TNpmApi): string {
   switch (api.type) {
-    case "search":
-      return `/-/v1/search?text=${api.query}&size=${api.size ?? 5}&from=${0}`;
+    case "search": {
+      const sort = api.sort;
+      let url = `/-/v1/search?text=${api.query}&size=${api.size ?? 10}&from=0`;
+
+      if (sort && sort !== "relevant") {
+        const { quality, popularity, maintenance } = npmSortValues[sort];
+        const scoreParam = `quality:${quality},popularity:${popularity},maintenance:${maintenance}`;
+        url += `&score=${encodeURIComponent(scoreParam)}`;
+      }
+
+      return url;
+    }
     case "detail":
       return `/${api.name}`;
     default:
@@ -27,7 +38,7 @@ export function buildGithubReadMeUrl(url: string): string {
   return null;
 }
 
-export function buildRepositoryUrl(url?: string): string | null {
+export function buildGithubRepositoryUrl(url?: string): string | null {
   if (!url) return null;
 
   let cleanUrl = url.trim();
@@ -37,7 +48,6 @@ export function buildRepositoryUrl(url?: string): string | null {
   }
 
   if (cleanUrl.startsWith("git@")) {
-    // git@github.com:user/repo.git → github.com/user/repo.git
     cleanUrl = cleanUrl.replace("git@", "").replace(":", "/");
     cleanUrl = `https://${cleanUrl}`;
   }
