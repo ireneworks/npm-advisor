@@ -1,4 +1,3 @@
-"use client";
 import { useMemo, useRef } from "react";
 import InfiniteScroll from "#components/infiniteScroll/InfiniteScroll";
 import { usePackageSearchListFetcher } from "#components/packageSearchList/_hooks";
@@ -6,6 +5,7 @@ import { usePackageSearchListStore } from "#components/packageSearchList/_stores
 import { IPackageSearchListItem } from "#components/packageSearchList/packageSearchList.interface";
 import ListItem from "#components/packageSearchList/_components/ListItem";
 import { useSearchParams } from "next/navigation";
+import { ListSkeletonLoading } from "#components/skeletonLoading/ListSkeletonLoading";
 
 export default function PackageSearchListContainer() {
   const query = useSearchParams();
@@ -46,7 +46,7 @@ export default function PackageSearchListContainer() {
           ))}
         </InfiniteScroll>
       )}
-      {isLoading && <p>loading</p>}
+      {isLoading && <ListSkeletonLoading />}
       {!isLoading && total === 0 && <p>No Results.</p>}
     </div>
   );

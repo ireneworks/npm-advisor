@@ -27,7 +27,7 @@ export default function ListItem({
     >
       <CardContent className={"px-3.5"}>
         <h2 className={"font-bold text-gray-900"}>{packageName}</h2>
-        <p className="text-gray-700 text-sm mb-2">{description}</p>
+        <p className="text-gray-700 text-sm mb-2 truncate">{description}</p>
         <div className={"flex gap-2 text-sm"}>
           <p className="text-gray-700">{version}</p>
           <p className="text-gray-300"> | </p>
