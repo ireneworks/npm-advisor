@@ -58,6 +58,10 @@ export default function SearchInputContainer() {
     [push],
   );
 
+  const onClickSearch = useCallback(() => {
+    void push(LIST + "?q=" + encodeURIComponent(query));
+  }, [push, query]);
+
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (!data || !data.objects.length) return;
@@ -73,13 +77,16 @@ export default function SearchInputContainer() {
           prev > 0 ? prev - 1 : data.objects.length - 1,
         );
       } else if (e.key === "Enter") {
+        e.preventDefault();
+
         if (highlightIndex >= 0) {
-          e.preventDefault();
           onSelect(data.objects[highlightIndex].package.name);
+        } else {
+          onClickSearch();
         }
       }
     },
-    [data, highlightIndex, onSelect],
+    [data, highlightIndex, onClickSearch, onSelect],
   );
 
   useEffect(() => {
@@ -108,7 +115,7 @@ export default function SearchInputContainer() {
         <Button
           type="button"
           className="cursor-pointer flex-none"
-          onClick={() => void push(LIST + "?q=" + encodeURIComponent(query))}
+          onClick={onClickSearch}
         >
           Search
         </Button>
