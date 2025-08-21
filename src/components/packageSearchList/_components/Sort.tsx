@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "#components/shadcn/select";
+} from "#components/shadcn/origin/select";
 
 export default function Sort() {
   return (

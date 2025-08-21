@@ -1,4 +1,4 @@
-import { Card, CardContent } from "#components/shadcn/card";
+import { Card, CardContent } from "#components/shadcn/origin/card";
 import { ICheckerResponse } from "#components/packageDetail/packageDetail.interface";
 import { useMemo } from "react";
 import CheckerResultList from "#components/packageDetail/_components/CheckerResultList";
@@ -21,7 +21,7 @@ export default function CheckerResult({ checkerResult }: Props) {
   }, [checkerResult]);
 
   return (
-    <Card className="mt-6 p-6">
+    <Card className="text-gray-900 mt-6 p-4 lg:p-6">
       <CardContent className="p-0">
         <p className="text-xl font-bold mb-6">Package Insights</p>
         {result === true && (

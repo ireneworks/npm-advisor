@@ -1,13 +1,13 @@
 "use client";
 import { Suspense, useMemo } from "react";
 import { useParams } from "next/navigation";
-import PageLayout from "#components/layouts/PageLayout";
 import PackageDetailContainer from "#components/packageDetail/_containers/PackageDetailContainer";
 import { useDetailFetcher } from "#components/packageDetail/_hooks";
 import MarkdownRenderer from "#components/packageDetail/_components/MarkdownRenderer";
 import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
-import { Separator } from "#components/shadcn/separator";
+import { Separator } from "#components/shadcn/origin/separator";
 import CheckerContainer from "#components/packageDetail/_containers/CheckerContainer";
+import DetailLayout from "#components/layouts/DetailLayout";
 
 export default function DetailPage() {
   const { name } = useParams();
@@ -19,19 +19,22 @@ export default function DetailPage() {
   const { readMe } = usePackageDetailStore();
 
   return (
-    <PageLayout>
-      <Suspense fallback={<h1>loading</h1>}>
-        <div className="flex-col gap-7 pt-6 pb-24 px-12">
-          <PackageDetailContainer />
-          <CheckerContainer packageName={packageName} />
-          {readMe && (
-            <>
-              <Separator />
-              <MarkdownRenderer content={readMe} />
-            </>
-          )}
-        </div>
-      </Suspense>
-    </PageLayout>
+    <Suspense fallback={<h1>loading</h1>}>
+      <div className="flex flex-col pt-6 px-4 pb-15 lg:gap-7 lg:pt-6 lg:pb-24 lg:px-12">
+        <DetailLayout>
+          {{
+            a: <PackageDetailContainer.A />,
+            b: <CheckerContainer packageName={packageName} />,
+            c: <PackageDetailContainer.B />,
+          }}
+        </DetailLayout>
+        {readMe && (
+          <>
+            <Separator className="bg-gray-200" />
+            <MarkdownRenderer content={readMe} />
+          </>
+        )}
+      </div>
+    </Suspense>
   );
 }

@@ -10,7 +10,7 @@ interface Props {
 
 const MarkdownRenderer: React.FC<Props> = ({ content }) => {
   return (
-    <div className="prose max-w-none mt-8">
+    <div className="prose max-w-none">
       <Markdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}

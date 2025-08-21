@@ -1,7 +1,6 @@
 "use client";
 import React, { useCallback } from "react";
 import ScrollToTop from "#components/scrollToTop/ScrollToTop";
-import Footer from "#components/footer/Footer";
 import SearchInputContainer from "#components/searchInput/_containers/SearchInputContainer";
 import { useRouter } from "next/navigation";
 import { HOME } from "#constants/navigation";
@@ -10,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function PageLayout({ children }: Props) {
+export default function Layout({ children }: Props) {
   const { push } = useRouter();
 
   const onClickLogo = useCallback(() => {
@@ -18,7 +17,7 @@ export default function PageLayout({ children }: Props) {
   }, [push]);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <nav className="sticky top-0 z-1 bg-white">
         <div className="px-4 py-3 items-center shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex gap-1 lg:gap-5 lg:py-5 lg:px-12 ">
           <h1
@@ -34,7 +33,6 @@ export default function PageLayout({ children }: Props) {
         {children}
         <ScrollToTop />
       </main>
-      <Footer />
-    </div>
+    </>
   );
 }

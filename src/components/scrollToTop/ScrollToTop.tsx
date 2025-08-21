@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "#components/shadcn/button";
+import { Button } from "#components/shadcn/origin/button";
 import { ChevronUp } from "lucide-react";
 
 export default function ScrollToTop() {

@@ -1,5 +1,4 @@
 "use client";
-import Footer from "#components/footer/Footer";
 import SearchInputContainer from "#components/searchInput/_containers/SearchInputContainer";
 
 export default function HomePage() {
@@ -14,7 +13,6 @@ export default function HomePage() {
         </h2>
         <SearchInputContainer />
       </div>
-      <Footer />
     </div>
   );
 }

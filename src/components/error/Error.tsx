@@ -1,4 +1,4 @@
-import { Button } from "#components/shadcn/button";
+import { Button } from "#components/shadcn/origin/button";
 import { useRouter } from "next/navigation";
 import { HOME } from "#constants/navigation";
 

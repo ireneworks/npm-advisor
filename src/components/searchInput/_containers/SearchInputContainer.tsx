@@ -1,41 +1,25 @@
 "use client";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { Input } from "#components/shadcn/input";
-import { Button } from "#components/shadcn/button";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { Input } from "#components/shadcn/origin/input";
+import { Button } from "#components/shadcn/origin/button";
+import { useRouter } from "next/navigation";
 import { useDebounce } from "#hooks/useDebounce";
 import { useNpm } from "#hooks/useNpm";
 import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
 import { TNpmApi } from "#types/model/api";
-import { DETAIL, LIST } from "#constants/navigation";
+import { DETAIL } from "#constants/navigation";
 import AutoFillList from "#components/searchInput/_components/AutoFillList";
+import useSearchQuery from "#hooks/useSearchQuery";
 
 export default function SearchInputContainer() {
-  const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
 
   const { push } = useRouter();
-  const path = usePathname();
-  const searchParam = useSearchParams();
-
-  const searchQuery = useMemo(() => {
-    return decodeURIComponent(searchParam.get("q"));
-  }, [searchParam]);
-
-  const isSearchListPage = useMemo(() => {
-    return path === LIST;
-  }, [path]);
-
+  const { query, setQuery, updateUrlSearchQuery } = useSearchQuery();
   const inputRef = useRef<HTMLInputElement>(null);
-
   const debouncedQuery = useDebounce(query, 300);
+
   const searchKey: TNpmApi | null = useMemo(() => {
     return debouncedQuery.length >= 2
       ? { type: "search", query: debouncedQuery, size: 5 }
@@ -43,6 +27,8 @@ export default function SearchInputContainer() {
   }, [debouncedQuery]);
 
   const { data, error } = useNpm<INpmSearchResponse<INpmPackage>>(searchKey);
+
+  console.log("searchError->", error);
 
   const isAutofilled = useMemo(() => {
     return isFocused && query.length >= 2;
@@ -55,12 +41,8 @@ export default function SearchInputContainer() {
       inputRef.current?.blur();
       void push(DETAIL + "/" + encodeURIComponent(packageName));
     },
-    [push],
+    [push, setQuery],
   );
-
-  const onClickSearch = useCallback(() => {
-    void push(LIST + "?q=" + encodeURIComponent(query));
-  }, [push, query]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -84,41 +66,31 @@ export default function SearchInputContainer() {
         } else {
           setIsFocused(false);
           inputRef.current.blur();
-          onClickSearch();
+          updateUrlSearchQuery();
         }
       }
     },
-    [data, highlightIndex, onClickSearch, onSelect],
+    [data, highlightIndex, onSelect, updateUrlSearchQuery],
   );
-
-  useEffect(() => {
-    if (isSearchListPage) {
-      setQuery(searchQuery);
-    }
-  }, [isSearchListPage, searchQuery]);
 
   return (
     <div className="relative w-full">
       <div className="flex gap-2">
         <Input
           type="text"
-          className="selection:bg-gray-200 selection:text-gray-900 text-sm flex-1 text-gray-900 rounded-sm focus-visible:ring-gray-100 placeholder:text-sm lg:placeholder:text-base placeholder:text-gray-400 lg:text-base lg:h-13"
+          className="selection:bg-gray-200 selection:text-gray-900 text-sm flex-1 text-gray-900 rounded-sm focus-visible:ring-gray-100 placeholder:text-sm lg:placeholder:text-base placeholder:text-gray-400 lg:text-base lg:h-13 lg:px-4.5"
           ref={inputRef}
           placeholder="Enter NPM package"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
-          onBlur={() =>
-            setTimeout(() => {
-              setIsFocused(false);
-            }, 100)
-          }
+          onBlur={() => setIsFocused(false)}
           onKeyDown={handleKeyDown}
         />
         <Button
           type="button"
           className="bg-indigo-500 hover:bg-indigo-700 rounded-sm cursor-pointer flex-none text-sm lg:text-base lg:h-13 lg:w-30"
-          onClick={onClickSearch}
+          onClick={updateUrlSearchQuery}
         >
           Search
         </Button>

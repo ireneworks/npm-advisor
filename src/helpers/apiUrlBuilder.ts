@@ -1,19 +1,10 @@
 import { TNpmApi } from "#types/model/api";
-import { npmSortValues } from "#constants/npmSort";
 
 export function buildNpmUrl(api: TNpmApi): string {
   switch (api.type) {
     case "search": {
-      const sort = api.sort;
-      let url = `/-/v1/search?text=${api.query}&size=${api.size ?? 10}&from=0`;
-
-      if (sort && sort !== "relevant") {
-        const { quality, popularity, maintenance } = npmSortValues[sort];
-        const scoreParam = `quality:${quality},popularity:${popularity},maintenance:${maintenance}`;
-        url += `&score=${encodeURIComponent(scoreParam)}`;
-      }
-
-      return url;
+      if (!api.query) return null;
+      return `/-/v1/search?text=${api.query}&size=${api.size ?? 10}&from=0`;
     }
     case "detail":
       return `/${api.name}`;

@@ -1,5 +1,5 @@
-import { Textarea } from "#components/shadcn/textarea";
-import { Button } from "#components/shadcn/button";
+import { Textarea } from "#components/shadcn/origin/textarea";
+import { Button } from "#components/shadcn/origin/button";
 import { Loader2Icon } from "lucide-react";
 
 interface Props {
@@ -19,14 +19,14 @@ export default function CheckerInput({
 }: Props) {
   return (
     <>
-      <h1 className="font-bold text-xl mb-3">
+      <h1 className="text-gray-900 text-base font-bold mb-3 lg:text-xl">
         Get advice for{" "}
         <span className="text-indigo-500 inline-block">{packageName}</span> in
         my development environment.
       </h1>
       <div className="flex flex-col gap-2">
         <Textarea
-          className="max-h-[200px]"
+          className="text-sm max-h-[100px] lg:max-h-[200px] lg:text-base"
           placeholder="Paste package.json"
           value={json}
           onChange={(e) => setJson(e.target.value)}
@@ -34,6 +34,7 @@ export default function CheckerInput({
         <div>
           <Button
             type="button"
+            className="bg-indigo-500 hover:bg-indigo-700"
             onClick={handleClick}
             disabled={!json || isLoading}
           >

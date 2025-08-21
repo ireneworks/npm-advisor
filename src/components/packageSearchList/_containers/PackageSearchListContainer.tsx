@@ -1,22 +1,19 @@
 "use client";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import InfiniteScroll from "#components/infiniteScroll/InfiniteScroll";
 import { usePackageSearchListFetcher } from "#components/packageSearchList/_hooks";
 import { usePackageSearchListStore } from "#components/packageSearchList/_stores/usePackageSearchListStore";
 import { IPackageSearchListItem } from "#components/packageSearchList/packageSearchList.interface";
 import ListItem from "#components/packageSearchList/_components/ListItem";
-import { useSearchParams } from "next/navigation";
 import { ListSkeletonLoading } from "#components/skeletonLoading/ListSkeletonLoading";
+import useSearchQuery from "#hooks/useSearchQuery";
 
 export default function PackageSearchListContainer() {
-  const query = useSearchParams();
+  const { query } = useSearchQuery();
+
   const debouncedLoadMore = useRef<NodeJS.Timeout | null>(null);
 
-  const searchQuery = useMemo(() => {
-    return query.get("q");
-  }, [query]);
-
-  const { isLoading, setPage } = usePackageSearchListFetcher(searchQuery);
+  const { isLoading, setPage } = usePackageSearchListFetcher(query);
   const { total, list } = usePackageSearchListStore();
 
   const loadMore = () => {

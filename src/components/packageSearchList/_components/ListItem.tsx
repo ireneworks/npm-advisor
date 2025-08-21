@@ -1,5 +1,5 @@
 import { DETAIL } from "#constants/navigation";
-import { Card, CardContent } from "#components/shadcn/card";
+import { Card, CardContent } from "#components/shadcn/origin/card";
 import { useRouter } from "next/navigation";
 import { ArrowDownToLine } from "lucide-react";
 
