@@ -23,7 +23,7 @@ const button = cva(
   },
 );
 
-interface Props extends VariantProps<typeof button> {}
+type Props = VariantProps<typeof button>;
 
 type ButtonProps = Props & React.ComponentProps<"button">;
 
