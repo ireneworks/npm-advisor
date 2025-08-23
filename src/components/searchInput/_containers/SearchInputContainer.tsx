@@ -1,7 +1,5 @@
 "use client";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { Input } from "#components/shadcn/origin/input";
-import { Button } from "#components/shadcn/origin/button";
 import { useRouter } from "next/navigation";
 import { useDebounce } from "#hooks/useDebounce";
 import { useNpm } from "#hooks/useNpm";
@@ -10,13 +8,15 @@ import { TNpmApi } from "#types/model/api";
 import { DETAIL } from "#constants/navigation";
 import AutoFillList from "#components/searchInput/_components/AutoFillList";
 import useSearchQuery from "#hooks/useSearchQuery";
+import Button from "#components/base/Button";
+import Input from "#components/base/Input";
 
 export default function SearchInputContainer() {
   const [isFocused, setIsFocused] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  const { query, setQuery, updateUrlSearchQuery } = useSearchQuery();
 
   const { push } = useRouter();
-  const { query, setQuery, updateUrlSearchQuery } = useSearchQuery();
   const inputRef = useRef<HTMLInputElement>(null);
   const debouncedQuery = useDebounce(query, 300);
 
@@ -27,8 +27,6 @@ export default function SearchInputContainer() {
   }, [debouncedQuery]);
 
   const { data, error } = useNpm<INpmSearchResponse<INpmPackage>>(searchKey);
-
-  console.log("searchError->", error);
 
   const isAutofilled = useMemo(() => {
     return isFocused && query.length >= 2;
@@ -89,7 +87,8 @@ export default function SearchInputContainer() {
         />
         <Button
           type="button"
-          className="bg-indigo-500 hover:bg-indigo-700 rounded-sm cursor-pointer flex-none text-sm lg:text-base lg:h-13 lg:w-30"
+          size={"lg"}
+          className="lg:text-base lg:h-13 lg:w-30"
           onClick={updateUrlSearchQuery}
         >
           Search

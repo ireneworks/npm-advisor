@@ -1,6 +1,6 @@
-import { Textarea } from "#components/shadcn/origin/textarea";
-import { Button } from "#components/shadcn/origin/button";
 import { Loader2Icon } from "lucide-react";
+import Button from "#components/base/Button";
+import Textarea from "#components/base/Textarea";
 
 interface Props {
   packageName: string;
@@ -34,7 +34,7 @@ export default function CheckerInput({
         <div>
           <Button
             type="button"
-            className="bg-indigo-500 hover:bg-indigo-700"
+            size="md"
             onClick={handleClick}
             disabled={!json || isLoading}
           >

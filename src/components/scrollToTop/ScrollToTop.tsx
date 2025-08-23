@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "#components/shadcn/origin/button";
+import React, { useCallback, useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
+import Button from "#components/base/Button";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,21 +22,16 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  if (!isVisible) return null;
 
   return (
-    <>
-      {isVisible && (
-        <Button
-          onClick={scrollToTop}
-          variant="outline"
-          className="fixed h-[42px] shadow-lg rounded-full cursor-pointer right-4 bottom-4 lg:right-10 lg:bottom-10"
-        >
-          <ChevronUp />
-        </Button>
-      )}
-    </>
+    <Button
+      type="button"
+      variant="outline"
+      onClick={scrollToTop}
+      className="w-[40px] h-[40px] fixed shadow-lg rounded-full right-4 bottom-4 lg:right-20 lg:bottom-20"
+    >
+      <ChevronUp className="stroke-gray-400" />
+    </Button>
   );
 }

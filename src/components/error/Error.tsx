@@ -1,6 +1,6 @@
-import { Button } from "#components/shadcn/origin/button";
 import { useRouter } from "next/navigation";
 import { HOME } from "#constants/navigation";
+import Button from "#components/base/Button";
 
 export default function Error() {
   const { replace } = useRouter();
@@ -11,11 +11,7 @@ export default function Error() {
         <h1 className="text-xl font-bold">NPM Advisor</h1>
         <p className="text-2xl font-bold">Something went wrong.</p>
         <p className="text-gray-600">Please try again later.</p>
-        <Button
-          type="button"
-          className="cursor-pointer"
-          onClick={() => void replace(HOME)}
-        >
+        <Button type="button" onClick={() => void replace(HOME)}>
           Go to home
         </Button>
       </div>

@@ -5,9 +5,9 @@ import PackageDetailContainer from "#components/packageDetail/_containers/Packag
 import { useDetailFetcher } from "#components/packageDetail/_hooks";
 import MarkdownRenderer from "#components/packageDetail/_components/MarkdownRenderer";
 import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
-import { Separator } from "#components/shadcn/origin/separator";
 import CheckerContainer from "#components/packageDetail/_containers/CheckerContainer";
 import DetailLayout from "#components/layouts/DetailLayout";
+import Divider from "#components/base/Divider";
 
 export default function DetailPage() {
   const { name } = useParams();
@@ -30,7 +30,7 @@ export default function DetailPage() {
         </DetailLayout>
         {readMe && (
           <>
-            <Separator className="bg-gray-200" />
+            <Divider />
             <MarkdownRenderer content={readMe} />
           </>
         )}
