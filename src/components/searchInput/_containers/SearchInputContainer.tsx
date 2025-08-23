@@ -3,11 +3,11 @@ import React, { useCallback, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDebounce } from "#hooks/useDebounce";
 import { useNpm } from "#hooks/useNpm";
+import useSearchQuery from "#hooks/useSearchQuery";
 import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
 import { TNpmApi } from "#types/model/api";
 import { DETAIL } from "#constants/navigation";
 import AutoFillList from "#components/searchInput/_components/AutoFillList";
-import useSearchQuery from "#hooks/useSearchQuery";
 import Button from "#components/base/Button";
 import Input from "#components/base/Input";
 

@@ -29,7 +29,7 @@ export default function ScrollToTop() {
       type="button"
       variant="outline"
       onClick={scrollToTop}
-      className="w-[40px] h-[40px] fixed shadow-lg rounded-full right-4 bottom-4 lg:right-20 lg:bottom-20"
+      className="w-[40px] h-[40px] fixed shadow-lg rounded-full right-4 bottom-4 lg:right-10 lg:bottom-10"
     >
       <ChevronUp className="stroke-gray-400" />
     </Button>
