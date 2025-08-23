@@ -78,7 +78,7 @@ export default function SearchInputContainer() {
           type="text"
           className="selection:bg-gray-200 selection:text-gray-900 text-sm flex-1 text-gray-900 rounded-sm focus-visible:ring-gray-100 placeholder:text-sm lg:placeholder:text-base placeholder:text-gray-400 lg:text-base lg:h-13 lg:px-4.5"
           ref={inputRef}
-          placeholder="Enter NPM package"
+          placeholder="Enter npm package"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}

@@ -24,7 +24,7 @@ export default function Layout({ children }: Props) {
             className="text-sm leading-3.5 p-0 m-0 cursor-pointer font-black text-indigo-600 lg:text-xl lg:whitespace-nowrap"
             onClick={onClickLogo}
           >
-            NPM Advisor
+            npm Advisor
           </h1>
           <SearchInputContainer />
         </div>
