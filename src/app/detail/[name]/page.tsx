@@ -1,13 +1,13 @@
 "use client";
 import { Suspense, useMemo } from "react";
 import { useParams } from "next/navigation";
-import PackageDetailContainer from "#components/packageDetail/_containers/PackageDetailContainer";
-import { useDetailFetcher } from "#components/packageDetail/_hooks";
-import MarkdownRenderer from "#components/packageDetail/_components/MarkdownRenderer";
-import { usePackageDetailStore } from "#components/packageDetail/_stores/usePackageDetailStore";
-import CheckerContainer from "#components/packageDetail/_containers/CheckerContainer";
-import DetailLayout from "#components/layouts/DetailLayout";
-import Divider from "#components/base/Divider";
+import PackageDetailContainer from "../../../component/packageDetail/_containers/PackageDetailContainer";
+import { useDetailFetcher } from "../../../component/packageDetail/_hooks";
+import MarkdownRenderer from "../../../component/packageDetail/_components/MarkdownRenderer";
+import { usePackageDetailStore } from "../../../component/packageDetail/_stores/usePackageDetailStore";
+import CheckerContainer from "../../../component/packageDetail/_containers/CheckerContainer";
+import DetailLayout from "../../../component/layouts/DetailLayout";
+import Divider from "../../../component/base/Divider";
 
 export default function DetailPage() {
   const { name } = useParams();

@@ -1,5 +1,5 @@
 "use client";
-import SearchInputContainer from "#components/searchInput/_containers/SearchInputContainer";
+import SearchInputContainer from "../component/searchInput/_containers/SearchInputContainer";
 
 export default function HomePage() {
   return (

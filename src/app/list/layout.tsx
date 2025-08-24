@@ -1,9 +1,9 @@
 "use client";
 import React, { useCallback } from "react";
-import ScrollToTop from "#components/scrollToTop/ScrollToTop";
-import SearchInputContainer from "#components/searchInput/_containers/SearchInputContainer";
+import ScrollToTop from "../../component/scrollToTop/ScrollToTop";
+import SearchInputContainer from "../../component/searchInput/_containers/SearchInputContainer";
 import { useRouter } from "next/navigation";
-import { HOME } from "#constants/navigation";
+import { HOME } from "../../constant/navigation";
 
 interface Props {
   children: React.ReactNode;

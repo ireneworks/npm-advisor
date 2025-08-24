@@ -1,6 +1,6 @@
 "use client";
 
-import Error from "#components/error/Error";
+import Error from "../component/error/Error";
 
 export default function NotFoundPage() {
   return <Error />;
