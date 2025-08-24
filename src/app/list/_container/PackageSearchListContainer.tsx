@@ -2,11 +2,11 @@
 import { useRef } from "react";
 import InfiniteScroll from "#component/infiniteScroll/InfiniteScroll";
 import { usePackageSearchListFetcher } from "../_hooks";
-import { usePackageSearchListStore } from "../_stores/usePackageSearchListStore";
-import { IPackageSearchListItem } from "../;ist.interface";
-import ListItem from "../_components/ListItem";
+import { usePackageSearchListStore } from "../_store/usePackageSearchListStore";
+import ListItem from "../_component/ListItem";
 import { ListSkeletonLoading } from "#component/skeletonLoading/ListSkeletonLoading";
 import useSearchQuery from "#hook/useSearchQuery";
+import { IPackageSearchListItem } from "../list.interface";
 
 export default function PackageSearchListContainer() {
   const { query } = useSearchQuery();

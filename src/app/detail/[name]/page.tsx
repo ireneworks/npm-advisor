@@ -1,11 +1,11 @@
 "use client";
 import { Suspense, useMemo } from "react";
 import { useParams } from "next/navigation";
-import PackageDetailContainer from "./_containers/PackageDetailContainer";
+import PackageDetailContainer from "./_container/PackageDetailContainer";
 import { useDetailFetcher } from "./_hooks";
-import MarkdownRenderer from "./_components/MarkdownRenderer";
-import { usePackageDetailStore } from "./_stores/usePackageDetailStore";
-import CheckerContainer from "./_containers/CheckerContainer";
+import MarkdownRenderer from "./_component/MarkdownRenderer";
+import { usePackageDetailStore } from "./_store/usePackageDetailStore";
+import CheckerContainer from "./_container/CheckerContainer";
 import DetailLayout from "../../../component/layouts/DetailLayout";
 import Divider from "../../../component/base/Divider";
 
