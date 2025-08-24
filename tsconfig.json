@@ -24,33 +24,28 @@
     ],
     "baseUrl": "./src",
     "paths": {
-      "#types/*": [
-        "@types/*"
+      "#type/*": [
+        "@type/*"
       ],
-      "#apis/*": [
-        "apis/*"
+      "#api/*": [
+        "api/*"
       ],
-      "#components/*": [
-        "components/*"
+      "#component/*": [
+        "component/*"
       ],
-      "#hooks/*": [
-        "hooks/*"
+      "#hook/*": [
+        "hook/*"
       ],
-      "#lib/*": [
-        "lib/*"
+      "#helper/*": [
+        "helper/*"
       ],
-      "#pages/*": [
-        "pages/*"
-      ],
-      "#helpers/*": [
-        "helpers/*"
-      ],
-      "#constants/*": [
-        "constants/*"
+      "#constant/*": [
+        "constant/*"
       ],
     },
   },
   "include": [
+    "env.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
