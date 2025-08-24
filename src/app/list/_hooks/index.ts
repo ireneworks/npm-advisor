@@ -1,11 +1,11 @@
 import {
   packageSearchListState,
   usePackageSearchListStore,
-} from "../_stores/usePackageSearchListStore";
+} from "../_store/usePackageSearchListStore";
 import { useNpm } from "#hook/useNpm";
 import { REQUEST_SIZE } from "../list.constant";
 import { useEffect, useState } from "react";
-import { packageSearchListProcessing } from "../_helpers/packageSearchListProcessing";
+import { packageSearchListProcessing } from "../_service/packageSearchListProcessing";
 import { Nullable } from "#type/utility/nullable";
 import { INpmSearchResponse, INpmSearchResult } from "#type/model/npmPackage";
 

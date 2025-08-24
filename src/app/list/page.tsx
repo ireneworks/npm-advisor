@@ -1,5 +1,5 @@
 "use client";
-import PackageSearchListContainer from "./_containers/PackageSearchListContainer";
+import PackageSearchListContainer from "./_container/PackageSearchListContainer";
 import { Suspense } from "react";
 import { ListSkeletonLoading } from "#component/skeletonLoading/ListSkeletonLoading";
 

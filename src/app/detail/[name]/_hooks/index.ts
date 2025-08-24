@@ -4,11 +4,11 @@ import { useGithubReadMe } from "#hook/useGithubReadMe";
 import {
   packageDetailState,
   usePackageDetailStore,
-} from "../_stores/usePackageDetailStore";
+} from "../_store/usePackageDetailStore";
 import {
   detailProcessing,
   readMeProcessing,
-} from "../_helpers/packageDetailProcessing";
+} from "../_service/packageDetailProcessing";
 import { useOpenAiMutation } from "#hook/useOpenAiMutation";
 import { INpmDetail } from "#type/model/npmPackage";
 import { IGithubReadMe } from "#type/model/github";

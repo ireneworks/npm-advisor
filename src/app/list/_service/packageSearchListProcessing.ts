@@ -1,6 +1,6 @@
-import { IPackageSearchListState } from "../;ist.interface";
 import { calculateDayFromNow } from "../../../service/date";
 import { INpmSearchResponse, INpmSearchResult } from "#type/model/npmPackage";
+import { IPackageSearchListState } from "../list.interface";
 
 export function packageSearchListProcessing(
   data: INpmSearchResponse<INpmSearchResult>,

@@ -1,6 +1,6 @@
 import { SquareArrowOutUpRight as LinkIcon } from "lucide-react";
-import { usePackageDetailStore } from "../_stores/usePackageDetailStore";
-import DetailTag from "../_components/DetailTag";
+import { usePackageDetailStore } from "../_store/usePackageDetailStore";
+import DetailTag from "../_component/DetailTag";
 
 function A() {
   const { packageName, description } = usePackageDetailStore();

@@ -1,5 +1,5 @@
 import { create } from "zustand/react";
-import { IPackageSearchListState } from "../;ist.interface";
+import { IPackageSearchListState } from "../list.interface";
 
 export const packageSearchListState: IPackageSearchListState = {
   total: 0,
