@@ -1,6 +1,6 @@
 import React from "react";
 import Markdown from "react-markdown";
-import CodeBlock from "../../packageDetail/_components/CodeBlock";
+import CodeBlock from "./CodeBlock";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 

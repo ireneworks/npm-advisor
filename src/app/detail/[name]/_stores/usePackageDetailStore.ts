@@ -1,5 +1,5 @@
 import { create } from "zustand/react";
-import { IPackageDetailState } from "../../packageDetail/packageDetail.interface";
+import { IPackageDetailState } from "../detail.interface";
 
 export const packageDetailState: IPackageDetailState = {
   packageName: "",

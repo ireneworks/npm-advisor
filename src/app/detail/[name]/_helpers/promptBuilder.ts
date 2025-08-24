@@ -1,4 +1,4 @@
-import { promptTemplate } from "../../packageDetail/packageDetail.constant";
+import { promptTemplate } from "../detail.constant";
 
 interface Props {
   packageName: string;
