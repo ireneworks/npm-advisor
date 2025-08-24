@@ -1,12 +1,12 @@
 import {
   packageSearchListState,
   usePackageSearchListStore,
-} from "../../packageSearchList/_stores/usePackageSearchListStore";
+} from "../_stores/usePackageSearchListStore";
 import { useNpm } from "#hook/useNpm";
-import { REQUEST_SIZE } from "../../packageSearchList/packageSearchList.constant";
+import { REQUEST_SIZE } from "../list.constant";
 import { useEffect, useState } from "react";
-import { packageSearchListProcessing } from "../../packageSearchList/_helpers/packageSearchListProcessing";
-import { Nullable } from "#type/util/nullable";
+import { packageSearchListProcessing } from "../_helpers/packageSearchListProcessing";
+import { Nullable } from "#type/utility/nullable";
 import { INpmSearchResponse, INpmSearchResult } from "#type/model/npmPackage";
 
 export function usePackageSearchListFetcher(query: Nullable<string>) {

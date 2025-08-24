@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { ICheckerResponse } from "../../packageDetail/packageDetail.interface";
-import CheckerResultList from "../../packageDetail/_components/CheckerResultList";
-import Card from "../../base/Card";
+import { ICheckerResponse } from "../detail.interface";
+import CheckerResultList from "./CheckerResultList";
+import Card from "#component/base/Card";
 
 interface Props {
   checkerResult: ICheckerResponse;

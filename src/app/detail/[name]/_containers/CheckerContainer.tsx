@@ -1,11 +1,11 @@
 "use client";
 import { useMemo, useState } from "react";
-import { buildPrompt } from "../../packageDetail/_helpers/promptBuilder";
-import { usePackageDetailStore } from "../../packageDetail/_stores/usePackageDetailStore";
-import { useCheckerFetcher } from "../../packageDetail/_hooks";
+import { buildPrompt } from "../_helpers/promptBuilder";
+import { usePackageDetailStore } from "../_stores/usePackageDetailStore";
+import { useCheckerFetcher } from "../_hooks";
 import CheckerInput from "../_components/CheckerInput";
-import CheckerResult from "../../packageDetail/_components/CheckerResult";
-import Card from "../../base/Card";
+import CheckerResult from "../_components/CheckerResult";
+import Card from "#component/base/Card";
 
 interface Props {
   packageName: string;

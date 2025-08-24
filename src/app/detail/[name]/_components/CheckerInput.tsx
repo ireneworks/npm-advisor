@@ -1,6 +1,6 @@
 import { Loader2Icon } from "lucide-react";
-import Button from "../../base/Button";
-import Textarea from "../../base/Textarea";
+import Button from "#component/base/Button";
+import Textarea from "#component/base/Textarea";
 
 interface Props {
   packageName: string;

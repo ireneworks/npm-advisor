@@ -1,12 +1,12 @@
 "use client";
 import { useRef } from "react";
-import InfiniteScroll from "../../infiniteScroll/InfiniteScroll";
-import { usePackageSearchListFetcher } from "../../packageSearchList/_hooks";
-import { usePackageSearchListStore } from "../../packageSearchList/_stores/usePackageSearchListStore";
-import { IPackageSearchListItem } from "../../packageSearchList/packageSearchList.interface";
-import ListItem from "../../packageSearchList/_components/ListItem";
-import { ListSkeletonLoading } from "../../skeletonLoading/ListSkeletonLoading";
-import useSearchQuery from "../../../hook/useSearchQuery";
+import InfiniteScroll from "#component/infiniteScroll/InfiniteScroll";
+import { usePackageSearchListFetcher } from "../_hooks";
+import { usePackageSearchListStore } from "../_stores/usePackageSearchListStore";
+import { IPackageSearchListItem } from "../;ist.interface";
+import ListItem from "../_components/ListItem";
+import { ListSkeletonLoading } from "#component/skeletonLoading/ListSkeletonLoading";
+import useSearchQuery from "#hook/useSearchQuery";
 
 export default function PackageSearchListContainer() {
   const { query } = useSearchQuery();

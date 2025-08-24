@@ -1,7 +1,7 @@
 import { npmRequester } from "./npm";
 import { githubRequester } from "./github";
 import { openAiRequester } from "./openai";
-import { CommonResponse } from "#type/util/request";
+import { CommonResponse } from "#type/utility/request";
 
 export const npmFetcher = async <T>(url: string): Promise<T> => {
   try {

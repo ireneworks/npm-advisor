@@ -1,7 +1,7 @@
 import { DETAIL } from "#constant/navigation";
 import { useRouter } from "next/navigation";
 import { ArrowDownToLine } from "lucide-react";
-import Card from "../../base/Card";
+import Card from "#component/base/Card";
 
 interface Props {
   packageName: string;

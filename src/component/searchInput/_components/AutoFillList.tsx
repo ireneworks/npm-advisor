@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../base/Card";
-import { Nullable } from "#type/util/nullable";
+import { Nullable } from "#type/utility/nullable";
 import { INpmPackage, INpmSearchResponse } from "#type/model/npmPackage";
 
 interface Props {
