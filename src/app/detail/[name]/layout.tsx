@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import ScrollToTop from "../../../component/scrollToTop/ScrollToTop";
 import SearchInputContainer from "../../../component/searchInput/_containers/SearchInputContainer";
 import { useRouter } from "next/navigation";
-import { HOME } from "../../../constant/navigation";
+import { HOME } from "#constant/navigation";
 
 interface Props {
   children: React.ReactNode;

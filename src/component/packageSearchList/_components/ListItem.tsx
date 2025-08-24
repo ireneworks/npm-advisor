@@ -1,4 +1,4 @@
-import { DETAIL } from "../../../constant/navigation";
+import { DETAIL } from "#constant/navigation";
 import { useRouter } from "next/navigation";
 import { ArrowDownToLine } from "lucide-react";
 import Card from "../../base/Card";

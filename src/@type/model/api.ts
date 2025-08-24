@@ -1,4 +1,4 @@
-export type TNpmApi =
+export type TNpmApiRequest =
   | {
       type: "search";
       query: string;

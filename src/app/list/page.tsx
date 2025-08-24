@@ -1,7 +1,7 @@
 "use client";
 import PackageSearchListContainer from "../../component/packageSearchList/_containers/PackageSearchListContainer";
 import { Suspense } from "react";
-import { ListSkeletonLoading } from "../../component/skeletonLoading/ListSkeletonLoading";
+import { ListSkeletonLoading } from "#component/skeletonLoading/ListSkeletonLoading";
 
 export default function ListPage() {
   return (

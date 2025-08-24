@@ -1,10 +1,10 @@
 import useSWR from "swr";
-import { TNpmApi } from "#types/model/api";
-import { buildNpmUrl } from "../helper/apiUrlBuilder";
-import { npmFetcher } from "../api/swrFetcher";
+import { buildNpmUrl } from "#helper/apiUrlBuilder";
+import { npmFetcher } from "#api/swrFetcher";
+import { TNpmApiRequest } from "#type/model/api";
 
 // TODO T name change
-export function useNpm<T>(api: TNpmApi | null) {
+export function useNpm<T>(api: TNpmApiRequest | null) {
   const key = api ? buildNpmUrl(api) : null;
   const { data, error, isValidating } = useSWR<T>(key, npmFetcher);
 

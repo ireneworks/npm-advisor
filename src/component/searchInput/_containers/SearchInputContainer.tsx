@@ -1,15 +1,15 @@
 "use client";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useDebounce } from "../../../hook/useDebounce";
-import { useNpm } from "../../../hook/useNpm";
+import { useDebounce } from "#hook/useDebounce";
+import { useNpm } from "#hook/useNpm";
 import useSearchQuery from "../../../hook/useSearchQuery";
-import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
-import { TNpmApi } from "#types/model/api";
-import { DETAIL } from "../../../constant/navigation";
+import { DETAIL } from "#constant/navigation";
 import AutoFillList from "../../searchInput/_components/AutoFillList";
 import Button from "../../base/Button";
 import Input from "../../base/Input";
+import { INpmPackage, INpmSearchResponse } from "#type/model/npmPackage";
+import { TNpmApiRequest } from "#type/model/api";
 
 export default function SearchInputContainer() {
   const [isFocused, setIsFocused] = useState(false);
@@ -20,7 +20,7 @@ export default function SearchInputContainer() {
   const inputRef = useRef<HTMLInputElement>(null);
   const debouncedQuery = useDebounce(query, 300);
 
-  const searchKey: TNpmApi | null = useMemo(() => {
+  const searchKey: TNpmApiRequest | null = useMemo(() => {
     return debouncedQuery.length >= 2
       ? { type: "search", query: debouncedQuery, size: 5 }
       : null;

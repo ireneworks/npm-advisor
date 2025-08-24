@@ -1,6 +1,6 @@
-import { TNpmApi } from "#types/model/api";
+import { TNpmApiRequest } from "#type/model/api";
 
-export function buildNpmUrl(api: TNpmApi): string {
+export function buildNpmUrl(api: TNpmApiRequest): string {
   switch (api.type) {
     case "search": {
       if (!api.query) return null;

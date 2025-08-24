@@ -1,7 +1,7 @@
 import React from "react";
-import { INpmPackage, INpmSearchResponse } from "#types/model/npmPackage";
-import { Nullable } from "#types/util/nullable";
 import Card from "../../base/Card";
+import { Nullable } from "#type/util/nullable";
+import { INpmPackage, INpmSearchResponse } from "#type/model/npmPackage";
 
 interface Props {
   data: Nullable<INpmSearchResponse<INpmPackage>>;

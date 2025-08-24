@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { useNpm } from "../../../hook/useNpm";
-import { INpmDetail } from "#types/model/npmPackage";
-import { useGithubReadMe } from "../../../hook/useGithubReadMe";
+import { useNpm } from "#hook/useNpm";
+import { useGithubReadMe } from "#hook/useGithubReadMe";
 import {
   packageDetailState,
   usePackageDetailStore,
@@ -10,8 +9,9 @@ import {
   detailProcessing,
   readMeProcessing,
 } from "../../packageDetail/_helpers/packageDetailProcessing";
-import { useOpenAiMutation } from "../../../hook/useOpenAiMutation";
-import { IGithubReadMe } from "#types/model/github";
+import { useOpenAiMutation } from "#hook/useOpenAiMutation";
+import { INpmDetail } from "#type/model/npmPackage";
+import { IGithubReadMe } from "#type/model/github";
 
 export function useDetailFetcher(packageName: string) {
   const { data: detail, isLoading: isLoadingNpm } = useNpm<INpmDetail>({

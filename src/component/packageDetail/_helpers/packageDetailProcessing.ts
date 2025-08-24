@@ -1,10 +1,10 @@
-import { INpmDetail } from "#types/model/npmPackage";
 import dayjs from "dayjs";
 import { IPackageDetailState } from "../../packageDetail/packageDetail.interface";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { buildGithubRepositoryUrl } from "../../../helper/apiUrlBuilder";
-import { calculateDayFromNow } from "../../../helper/date";
+import { buildGithubRepositoryUrl } from "#helper/apiUrlBuilder";
+import { calculateDayFromNow } from "#helper/date";
 import { decodeBase64 } from "../../packageDetail/_helpers/decodeBase64";
+import { INpmDetail } from "#type/model/npmPackage";
 
 dayjs.extend(relativeTime);
 

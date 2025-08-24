@@ -1,6 +1,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { LIST } from "../constant/navigation";
+import { LIST } from "#constant/navigation";
 
 export default function useSearchQuery() {
   const [query, setQuery] = useState("");

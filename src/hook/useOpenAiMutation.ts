@@ -1,4 +1,4 @@
-import { openAiFetcher } from "../api/swrFetcher";
+import { openAiFetcher } from "#api/swrFetcher";
 import useSWRMutation from "swr/mutation";
 
 export function useOpenAiMutation() {
